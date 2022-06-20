@@ -16,7 +16,7 @@ class OTPVerificationScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 18),
           child: ChangeNotifierProvider<OTPVerificationViewModel>(
             create: (_) => OTPVerificationViewModel(),
             builder: (context, state) => Column(

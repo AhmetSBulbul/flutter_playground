@@ -120,6 +120,7 @@ class App extends StatelessWidget {
       return null;
     },
     refreshListenable: loginInfo,
+    debugLogDiagnostics: true,
   );
 }
 
