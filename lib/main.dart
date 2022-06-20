@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
+import 'package:flutter_playground/simple_auth_ui/screens/login_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/welcome_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/widgets/simple_auth_layout.dart';
 import 'package:flutter_playground/simple_login/login/login_view_model.dart';
@@ -35,6 +36,7 @@ class App extends StatelessWidget {
               caption: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: R.colors.darkGray,
+                fontSize: 15,
               ),
             ),
             dividerColor: R.colors.border,
@@ -91,7 +93,7 @@ class App extends StatelessWidget {
                 textStyle: MaterialStateProperty.all(
                   TextStyle(
                     fontSize: 15,
-                    decoration: TextDecoration.underline,
+                    // decoration: TextDecoration.underline,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -132,8 +134,16 @@ class App extends StatelessWidget {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomePage()),
       GoRoute(
-          path: '/simple_auth',
-          builder: (context, state) => const SimpleAuthWelcomeScreen()),
+        path: '/simple_auth',
+        builder: (context, state) => const SimpleAuthWelcomeScreen(),
+        routes: [
+          GoRoute(
+            path: 'login',
+            builder: (context, state) => SimpleAuthLoginScreen(),
+          ),
+          // GoRoute(path: '/simple_auth/otp_verification', builder: (context, state) => OtpVerificationScreen()),
+        ],
+      ),
       GoRoute(
         path: '/login',
         builder: (context, state) {

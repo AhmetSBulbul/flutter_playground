@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/extensions/context_extension.dart';
 import 'package:flutter_playground/app/resources/r.dart';
+import 'package:go_router/go_router.dart';
 
 class SimpleAuthWelcomeScreen extends StatelessWidget {
   const SimpleAuthWelcomeScreen({Key? key}) : super(key: key);
@@ -34,7 +35,10 @@ class SimpleAuthWelcomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 46.0,
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text('Login')),
+                    ElevatedButton(
+                      onPressed: () => context.go('/simple_auth/login'),
+                      child: Text('Login'),
+                    ),
                     const SizedBox(
                       height: 16.0,
                     ),
