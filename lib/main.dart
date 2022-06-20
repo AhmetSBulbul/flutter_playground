@@ -22,6 +22,22 @@ class App extends StatelessWidget {
           theme: ThemeData(
             useMaterial3: true,
             appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
+            textTheme: TextTheme(
+              headlineLarge: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+                letterSpacing: -0.3,
+                color: R.colors.dark,
+              ),
+              bodyText2: TextStyle(fontSize: 16, color: R.colors.gray),
+              caption: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: R.colors.darkGray,
+              ),
+            ),
+            dividerColor: R.colors.border,
+            dividerTheme:
+                DividerThemeData(color: R.colors.border, thickness: 2),
             outlinedButtonTheme: OutlinedButtonThemeData(
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(

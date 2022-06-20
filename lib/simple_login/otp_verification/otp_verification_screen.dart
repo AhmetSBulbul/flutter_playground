@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_playground/app/resources/r.dart';
+import 'package:flutter_playground/app/extensions/context_extension.dart';
 import 'package:flutter_playground/simple_login/otp_verification/otp_verification_view_model.dart';
 import 'package:flutter_playground/simple_login/widgets/digit_input.dart';
 import 'package:flutter_playground/simple_login/widgets/login_footer.dart';
@@ -26,18 +25,13 @@ class OTPVerificationScreen extends StatelessWidget {
                 Text(
                   'OTP Verification',
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 30,
-                      letterSpacing: -0.3,
-                      color: R.colors.dark),
+                  style: context.textTheme.headlineLarge,
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 Text(
                   'Enter the verification code we just sent on your email address.',
-                  style: TextStyle(fontSize: 16, color: R.colors.gray),
                 ),
                 const Spacer(),
                 DigitInput(

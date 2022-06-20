@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/app/extensions/context_extension.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/simple_login/login/login_view_model.dart';
 import 'package:flutter_playground/simple_login/widgets/login_footer.dart';
@@ -31,11 +32,7 @@ class LoginScreen extends StatelessWidget {
                       widthFactor: 0.8,
                       child: Text(
                         'Welcome back! Glad to see you Again.',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 30,
-                            letterSpacing: -0.3,
-                            color: R.colors.dark),
+                        style: context.textTheme.headlineLarge,
                       ),
                     ),
                     if (verificationCode != null)
@@ -60,13 +57,12 @@ class LoginScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                          onPressed: () => context.go('/login/verification'),
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: R.colors.darkGray),
-                          )),
+                        onPressed: () => context.go('/login/verification'),
+                        child: Text(
+                          'Forgot Password?',
+                          style: context.textTheme.caption,
+                        ),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -83,23 +79,16 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Divider(
-                            thickness: 2,
                             endIndent: 10,
-                            color: R.colors.border,
                           ),
                         ),
                         Text(
                           'Or Login With',
-                          style: TextStyle(
-                              // fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: R.colors.darkGray),
+                          style: context.textTheme.caption,
                         ),
                         Expanded(
                           child: Divider(
-                            thickness: 2,
                             indent: 10,
-                            color: R.colors.border,
                           ),
                         ),
                       ],
