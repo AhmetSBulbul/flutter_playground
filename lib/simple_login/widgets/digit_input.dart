@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
-// import 'package:flutter/services.dart';
 
 const zeroWidthSpace = '\u200B';
 
@@ -43,7 +42,6 @@ class _DigitInputState extends State<DigitInput> {
             _focusNodes[i + 1].requestFocus();
             _currentFocusIndex = i + 1;
           } else {
-            print('i=3');
             _currentFocusIndex = 3;
             _focusNodes[i].unfocus();
             widget.onCodeEditingComplete(_textControllers.map((controller) {

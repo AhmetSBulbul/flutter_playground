@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/simple_login/otp_verification/otp_verification_view_model.dart';
 import 'package:flutter_playground/simple_login/widgets/digit_input.dart';
 import 'package:flutter_playground/simple_login/widgets/login_footer.dart';
-import 'package:go_router/go_router.dart';
-// import 'package:go_router/go_router.dart';
+
 import 'package:provider/provider.dart';
 
 class OTPVerificationScreen extends StatelessWidget {
   const OTPVerificationScreen({Key? key}) : super(key: key);
-  // final verificationInfo = OTPVerificationViewModel();
-
-  // void onVerify(BuildContext context, String val) {
-  //   context.go('/login?code=$val');
-  // }
 
   @override
   Widget build(BuildContext context) {
