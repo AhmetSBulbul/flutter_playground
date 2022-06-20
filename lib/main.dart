@@ -20,6 +20,24 @@ class App extends StatelessWidget {
       child: MaterialApp.router(
           theme: ThemeData(
             useMaterial3: true,
+            outlinedButtonTheme: OutlinedButtonThemeData(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                side: MaterialStateProperty.all(
+                  BorderSide(
+                    color: R.colors.border,
+                    width: 1,
+                  ),
+                ),
+                minimumSize: MaterialStateProperty.all(
+                  const Size(50, 50),
+                ),
+              ),
+            ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(

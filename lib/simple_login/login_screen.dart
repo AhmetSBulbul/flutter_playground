@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 80,
                 ),
                 FractionallySizedBox(
                   alignment: Alignment.centerLeft,
@@ -32,7 +32,10 @@ class LoginScreen extends StatelessWidget {
                         color: R.colors.dark),
                   ),
                 ),
-                const Spacer(),
+                const SizedBox(
+                  height: 40,
+                ),
+                // const Spacer(),
                 const TextField(
                   decoration: InputDecoration(
                     labelText: 'Enter your username',
@@ -77,22 +80,98 @@ class LoginScreen extends StatelessWidget {
                       )),
                 ),
                 ElevatedButton(
-                  // style: ButtonStyle(
-                  //   shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(10))),
-                  //   backgroundColor: MaterialStateProperty.all(R.colors.dark),
-                  //   minimumSize: MaterialStateProperty.all(const Size(200, 50)),
-                  // ),
                   onPressed: () {
                     context.read<LoginInfo>().login('test');
                   },
                   child: const Text(
                     'Login',
-                    // style: TextStyle(
-                    //     fontSize: 15,
-                    //     color: R.colors.white,
-                    //     fontWeight: FontWeight.w600),
                   ),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 2,
+                        endIndent: 10,
+                        color: R.colors.border,
+                      ),
+                    ),
+                    Text(
+                      'Or Login With',
+                      style: TextStyle(
+                          // fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: R.colors.darkGray),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 2,
+                        indent: 10,
+                        color: R.colors.border,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: SvgPicture.asset(
+                          R.svgImages.facebook_ic,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: SvgPicture.asset(
+                          R.svgImages.google_ic,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: SvgPicture.asset(
+                          R.svgImages.apple_ic,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don\'t have an account?',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: R.colors.darkGray),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Register Now',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: R.colors.primary),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
