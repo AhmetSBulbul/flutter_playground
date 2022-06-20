@@ -21,6 +21,7 @@ class App extends StatelessWidget {
       child: MaterialApp.router(
           theme: ThemeData(
             useMaterial3: true,
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
             outlinedButtonTheme: OutlinedButtonThemeData(
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(
