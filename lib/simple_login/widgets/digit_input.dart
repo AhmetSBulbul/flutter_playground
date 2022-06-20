@@ -42,6 +42,8 @@ class _DigitInputState extends State<DigitInput> {
             _focusNodes[i + 1].requestFocus();
             _currentFocusIndex = i + 1;
           } else {
+            print('i=3');
+            _currentFocusIndex = 3;
             _focusNodes[i].unfocus();
             widget.onCodeEditingComplete(_textControllers.map((controller) {
               return controller.text.replaceAll(zeroWidthSpace, '');
@@ -58,19 +60,22 @@ class _DigitInputState extends State<DigitInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (var i = 0; i < 4; i++) ...[
-          DigitInputField(
-            key: ValueKey('digit-$i'),
-            focusNode: _focusNodes[i],
-            onTap: onTap,
-            textController: _textControllers[i],
-          ),
-          if (i != 3) const Spacer(),
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (var i = 0; i < 4; i++) ...[
+            DigitInputField(
+              key: ValueKey('digit-$i'),
+              focusNode: _focusNodes[i],
+              onTap: onTap,
+              textController: _textControllers[i],
+            ),
+            if (i != 3) const Spacer(),
+          ],
         ],
-      ],
+      ),
     );
   }
 
@@ -113,36 +118,29 @@ class _DigitInputFieldState extends State<DigitInputField> {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 3,
-      child: TextField(
-        maxLength: 2,
-        controller: widget.textController,
-        onTap: widget.onTap,
-        textAlign: TextAlign.center,
-        showCursor: false,
-        // strutStyle: StrutStyle.disabled,
-        decoration: InputDecoration(
-          fillColor: widget.textController.text.length == 2
-              ? R.colors.white.withOpacity(0)
-              : null,
-          counterText: '',
-          enabledBorder: widget.textController.text.length == 2
-              ? Theme.of(context).inputDecorationTheme.focusedBorder?.copyWith(
-                    borderSide: BorderSide(
-                      color: R.colors.primary,
-                      width: 1,
+      child: AbsorbPointer(
+        child: TextField(
+          maxLength: 2,
+          controller: widget.textController,
+          textAlign: TextAlign.center,
+          showCursor: false,
+          // strutStyle: StrutStyle.disabled,
+          decoration: InputDecoration(
+            fillColor: widget.textController.text.length == 2
+                ? R.colors.white.withOpacity(0)
+                : null,
+            counterText: '',
+            focusedBorder:
+                Theme.of(context).inputDecorationTheme.focusedBorder?.copyWith(
+                      borderSide: BorderSide(
+                        color: R.colors.primary,
+                        width: 1,
+                      ),
                     ),
-                  )
-              : null,
-          focusedBorder:
-              Theme.of(context).inputDecorationTheme.focusedBorder?.copyWith(
-                    borderSide: BorderSide(
-                      color: R.colors.primary,
-                      width: 1,
-                    ),
-                  ),
+          ),
+          autofocus: true,
+          focusNode: widget.focusNode,
         ),
-        autofocus: true,
-        focusNode: widget.focusNode,
       ),
     );
   }

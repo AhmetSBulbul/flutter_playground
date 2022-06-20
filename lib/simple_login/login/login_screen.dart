@@ -30,8 +30,7 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       widthFactor: 0.8,
                       child: Text(
-                        verificationCode ??
-                            'Welcome back! Glad to see you Again.',
+                        'Welcome back! Glad to see you Again.',
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 30,
@@ -39,6 +38,8 @@ class LoginScreen extends StatelessWidget {
                             color: R.colors.dark),
                       ),
                     ),
+                    if (verificationCode != null)
+                      Text('Referance Code: $verificationCode'),
                     const Spacer(
                       flex: 5,
                     ),
