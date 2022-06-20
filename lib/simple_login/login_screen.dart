@@ -34,10 +34,11 @@ class LoginScreen extends StatelessWidget {
                 const Spacer(
                   flex: 5,
                 ),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  decoration: const InputDecoration(
                     labelText: 'Enter your username',
                   ),
+                  onChanged: context.read<LoginInfo>().onUserNameChanged,
                 ),
                 const Spacer(
                   flex: 2,
@@ -60,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    context.read<LoginInfo>().login('test');
+                    context.read<LoginInfo>().login();
                   },
                   child: const Text(
                     'Login',
