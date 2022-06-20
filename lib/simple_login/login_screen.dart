@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/app/resources/custom_colors.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/simple_login/login_info.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,8 +16,8 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(
-                  height: 80,
+                const Spacer(
+                  flex: 10,
                 ),
                 FractionallySizedBox(
                   alignment: Alignment.centerLeft,
@@ -32,36 +31,16 @@ class LoginScreen extends StatelessWidget {
                         color: R.colors.dark),
                   ),
                 ),
-                const SizedBox(
-                  height: 40,
+                const Spacer(
+                  flex: 5,
                 ),
-                // const Spacer(),
                 const TextField(
                   decoration: InputDecoration(
                     labelText: 'Enter your username',
-                    // labelStyle: TextStyle(
-                    //   color: R.colors.gray,
-                    //   fontSize: 15,
-                    //   fontWeight: FontWeight.w500,
-                    // ),
-                    // filled: true,
-                    // fillColor: R.colors.lightGray,
-                    // border: OutlineInputBorder(
-                    //   borderSide: BorderSide(color: R.colors.border, width: 2),
-                    //   borderRadius: BorderRadius.circular(10),
-                    // ),
-                    // enabledBorder: OutlineInputBorder(
-                    //   borderSide: BorderSide(color: R.colors.border, width: 2),
-                    //   borderRadius: BorderRadius.circular(10),
-                    // ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderSide: BorderSide(color: R.colors.border, width: 2),
-                    //   borderRadius: BorderRadius.circular(10),
-                    // ),
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
+                const Spacer(
+                  flex: 2,
                 ),
                 const TextField(
                   decoration: InputDecoration(
@@ -87,8 +66,8 @@ class LoginScreen extends StatelessWidget {
                     'Login',
                   ),
                 ),
-                const SizedBox(
-                  height: 24,
+                const Spacer(
+                  flex: 4,
                 ),
                 Row(
                   children: [
@@ -115,8 +94,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 24,
+                const Spacer(
+                  flex: 3,
                 ),
                 Row(
                   children: [
@@ -152,7 +131,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Spacer(),
+                const Spacer(
+                  flex: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
