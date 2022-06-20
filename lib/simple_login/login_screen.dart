@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/simple_login/login_info.dart';
+import 'package:flutter_playground/simple_login/widgets/login_footer.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -51,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => context.go('/login/verification'),
                       child: Text(
                         'Forgot Password?',
                         style: TextStyle(
@@ -135,25 +137,9 @@ class LoginScreen extends StatelessWidget {
                 const Spacer(
                   flex: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Don\'t have an account?',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: R.colors.darkGray),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Register Now',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: R.colors.primary),
-                      ),
-                    ),
-                  ],
+                const LoginScreenFooter(
+                  text: 'Don\'t have an account?',
+                  actionLabel: 'Register Now',
                 ),
               ],
             ),

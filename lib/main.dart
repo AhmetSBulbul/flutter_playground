@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/simple_login/login_info.dart';
 import 'package:flutter_playground/simple_login/login_screen.dart';
+import 'package:flutter_playground/simple_login/otp_verification.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -93,11 +94,19 @@ class App extends StatelessWidget {
     initialLocation: '/',
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomePage()),
-      GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => const LoginScreen(),
+        routes: [
+          GoRoute(
+              path: 'verification',
+              builder: (context, state) => const OTPVerificationScreen()),
+        ],
+      ),
     ],
     redirect: (state) {
       final bool loggedIn = loginInfo.isLoggedIn;
-      final bool loggingIn = state.subloc == '/login';
+      final bool loggingIn = state.subloc.startsWith('/login');
       if (!loggedIn) return loggingIn ? null : '/login';
 
       if (loggingIn) return '/';
