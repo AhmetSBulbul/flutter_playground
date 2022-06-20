@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
+import 'package:flutter_playground/simple_auth_ui/screens/welcome_screen.dart';
+import 'package:flutter_playground/simple_auth_ui/widgets/simple_auth_layout.dart';
 import 'package:flutter_playground/simple_login/login/login_view_model.dart';
 import 'package:flutter_playground/simple_login/login/login_screen.dart';
 import 'package:flutter_playground/simple_login/otp_verification/otp_verification_screen.dart';
@@ -40,9 +42,15 @@ class App extends StatelessWidget {
                 DividerThemeData(color: R.colors.border, thickness: 2),
             outlinedButtonTheme: OutlinedButtonThemeData(
               style: ButtonStyle(
+                textStyle: MaterialStateProperty.all(
+                  TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: R.colors.dark),
+                ),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 side: MaterialStateProperty.all(
@@ -52,7 +60,7 @@ class App extends StatelessWidget {
                   ),
                 ),
                 minimumSize: MaterialStateProperty.all(
-                  const Size(50, 50),
+                  const Size(56, 56),
                 ),
               ),
             ),
@@ -60,7 +68,7 @@ class App extends StatelessWidget {
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 foregroundColor: MaterialStateProperty.all(
@@ -68,7 +76,7 @@ class App extends StatelessWidget {
                 ),
                 backgroundColor: MaterialStateProperty.all(R.colors.dark),
                 minimumSize: MaterialStateProperty.all(
-                  const Size(200, 50),
+                  const Size(200, 56),
                 ),
                 textStyle: MaterialStateProperty.all(
                   const TextStyle(
@@ -76,6 +84,18 @@ class App extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+              ),
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: ButtonStyle(
+                textStyle: MaterialStateProperty.all(
+                  TextStyle(
+                    fontSize: 15,
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                foregroundColor: MaterialStateProperty.all(R.colors.primary),
               ),
             ),
             inputDecorationTheme: InputDecorationTheme(
@@ -108,9 +128,12 @@ class App extends StatelessWidget {
   }
 
   late final _router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/simple_auth',
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomePage()),
+      GoRoute(
+          path: '/simple_auth',
+          builder: (context, state) => const SimpleAuthWelcomeScreen()),
       GoRoute(
         path: '/login',
         builder: (context, state) {
@@ -126,16 +149,16 @@ class App extends StatelessWidget {
         ],
       ),
     ],
-    redirect: (state) {
-      final bool loggedIn = loginInfo.isLoggedIn;
-      final bool loggingIn = state.subloc.startsWith('/login');
-      if (!loggedIn) return loggingIn ? null : '/login';
+    // redirect: (state) {
+    //   final bool loggedIn = loginInfo.isLoggedIn;
+    //   final bool loggingIn = state.subloc.startsWith('/login');
+    //   if (!loggedIn) return loggingIn ? null : '/login';
 
-      if (loggingIn) return '/';
+    //   if (loggingIn) return '/';
 
-      return null;
-    },
-    refreshListenable: loginInfo,
+    //   return null;
+    // },
+    // refreshListenable: loginInfo,
     debugLogDiagnostics: true,
   );
 }
