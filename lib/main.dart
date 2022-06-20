@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
-import 'package:flutter_playground/simple_login/login_info.dart';
-import 'package:flutter_playground/simple_login/login_screen.dart';
-import 'package:flutter_playground/simple_login/otp_verification.dart';
+import 'package:flutter_playground/simple_login/login/login_view_model.dart';
+import 'package:flutter_playground/simple_login/login/login_screen.dart';
+import 'package:flutter_playground/simple_login/otp_verification/otp_verification_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -96,11 +96,16 @@ class App extends StatelessWidget {
       GoRoute(path: '/', builder: (context, state) => const HomePage()),
       GoRoute(
         path: '/login',
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) {
+          final query = state.queryParams['code'];
+          return LoginScreen(
+            verificationCode: query,
+          );
+        },
         routes: [
           GoRoute(
               path: 'verification',
-              builder: (context, state) => const OTPVerificationScreen()),
+              builder: (context, state) => OTPVerificationScreen()),
         ],
       ),
     ],

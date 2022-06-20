@@ -1,19 +1,17 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
-import 'package:flutter_playground/simple_login/login_info.dart';
+import 'package:flutter_playground/simple_login/login/login_view_model.dart';
 import 'package:flutter_playground/simple_login/widgets/login_footer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key, this.verificationCode}) : super(key: key);
+  final String? verificationCode;
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        // resizeToAvoidBottomInset: false,
-        // appBar: AppBar(title: const Text('Login')),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -32,7 +30,8 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       widthFactor: 0.8,
                       child: Text(
-                        'Welcome back! Glad to see you Again.',
+                        verificationCode ??
+                            'Welcome back! Glad to see you Again.',
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 30,

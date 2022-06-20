@@ -5,7 +5,9 @@ import 'package:flutter_playground/app/resources/r.dart';
 const zeroWidthSpace = '\u200B';
 
 class DigitInput extends StatefulWidget {
-  const DigitInput({Key? key}) : super(key: key);
+  const DigitInput({Key? key, required this.onCodeEditingComplete})
+      : super(key: key);
+  final Function(String) onCodeEditingComplete;
 
   @override
   State<DigitInput> createState() => _DigitInputState();
@@ -32,6 +34,7 @@ class _DigitInputState extends State<DigitInput> {
           } else {
             _textControllers[i].text = zeroWidthSpace;
             _focusNodes[i].unfocus();
+            widget.onCodeEditingComplete('');
           }
         } else if (_textControllers[i].text.length > 1) {
           if (i != 3) {
@@ -40,6 +43,9 @@ class _DigitInputState extends State<DigitInput> {
             _currentFocusIndex = i + 1;
           } else {
             _focusNodes[i].unfocus();
+            widget.onCodeEditingComplete(_textControllers.map((controller) {
+              return controller.text.replaceAll(zeroWidthSpace, '');
+            }).join());
           }
         }
       });
