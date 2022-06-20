@@ -29,6 +29,7 @@ class _DigitInputState extends State<DigitInput> {
       _textControllers[i].addListener(() {
         if (_textControllers[i].text.isEmpty) {
           if (i != 0) {
+            _textControllers[i - 1].text = zeroWidthSpace;
             _focusNodes[i - 1].requestFocus();
             _currentFocusIndex = i - 1;
           } else {
@@ -55,6 +56,7 @@ class _DigitInputState extends State<DigitInput> {
   }
 
   void onTap() {
+    _textControllers[_currentFocusIndex].text = zeroWidthSpace;
     _focusNodes[_currentFocusIndex].requestFocus();
   }
 
@@ -122,9 +124,13 @@ class _DigitInputFieldState extends State<DigitInputField> {
         child: TextField(
           maxLength: 2,
           controller: widget.textController,
+          keyboardType: TextInputType.phone,
           textAlign: TextAlign.center,
           showCursor: false,
-          // strutStyle: StrutStyle.disabled,
+          enableIMEPersonalizedLearning: false,
+          enableInteractiveSelection: false,
+          // scribbleEnabled: false,
+          strutStyle: StrutStyle.disabled,
           decoration: InputDecoration(
             fillColor: widget.textController.text.length == 2
                 ? R.colors.white.withOpacity(0)
