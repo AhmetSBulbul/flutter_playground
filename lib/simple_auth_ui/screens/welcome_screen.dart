@@ -43,7 +43,7 @@ class SimpleAuthWelcomeScreen extends StatelessWidget {
                       height: 16.0,
                     ),
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () => context.go('/simple_auth/register'),
                       child: Text('Register'),
                       style: context.theme.outlinedButtonTheme.style?.copyWith(
                         foregroundColor:

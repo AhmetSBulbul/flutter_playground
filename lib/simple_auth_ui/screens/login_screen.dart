@@ -3,6 +3,7 @@ import 'package:flutter_playground/app/extensions/context_extension.dart';
 import 'package:flutter_playground/simple_auth_ui/widgets/divider_with_text.dart';
 import 'package:flutter_playground/simple_auth_ui/widgets/simple_auth_layout.dart';
 import 'package:flutter_playground/simple_auth_ui/widgets/social_icon_buttons.dart';
+import 'package:go_router/go_router.dart';
 
 class SimpleAuthLoginScreen extends StatelessWidget {
   const SimpleAuthLoginScreen({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class SimpleAuthLoginScreen extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () => context.go('/simple_auth/login/forgot_password'),
               child: Text(
                 'Forgot Password?',
                 style: context.textTheme.caption,

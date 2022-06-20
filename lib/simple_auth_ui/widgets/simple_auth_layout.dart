@@ -6,12 +6,14 @@ class SimpleAuthLayout extends StatelessWidget {
   const SimpleAuthLayout(
       {Key? key,
       this.title,
+      this.subTitle,
       required this.child,
       this.footerText,
       this.footerAction})
       : super(key: key);
 
   final String? title;
+  final String? subTitle;
   final Widget child;
   final String? footerText;
   final TextButton? footerAction;
@@ -30,16 +32,27 @@ class SimpleAuthLayout extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 34.0),
-                  child: FractionallySizedBox(
-                    alignment: Alignment.centerLeft,
-                    widthFactor: 0.8,
+                SizedBox(
+                  height: 34,
+                ),
+                FractionallySizedBox(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: 0.8,
+                  child: Text(
+                    title ?? 'Simple Auth Layout Title',
+                    style: context.textTheme.headlineLarge,
+                  ),
+                ),
+                if (subTitle != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
                     child: Text(
-                      title ?? 'Simple Auth Layout Title',
-                      style: context.textTheme.headlineLarge,
+                      subTitle!,
+                      style: context.textTheme.caption,
                     ),
                   ),
+                SizedBox(
+                  height: 28,
                 ),
                 Expanded(child: child),
                 if (footerText != null || footerAction != null)

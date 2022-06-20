@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
+import 'package:flutter_playground/simple_auth_ui/screens/forgot_password_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/login_screen.dart';
+import 'package:flutter_playground/simple_auth_ui/screens/register_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/welcome_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/widgets/simple_auth_layout.dart';
 import 'package:flutter_playground/simple_login/login/login_view_model.dart';
@@ -138,10 +140,18 @@ class App extends StatelessWidget {
         builder: (context, state) => const SimpleAuthWelcomeScreen(),
         routes: [
           GoRoute(
-            path: 'login',
-            builder: (context, state) => SimpleAuthLoginScreen(),
+              path: 'login',
+              builder: (context, state) => SimpleAuthLoginScreen(),
+              routes: [
+                GoRoute(
+                    path: 'forgot_password',
+                    builder: (context, state) =>
+                        const SimpleAuthForgotPasswordScreen())
+              ]),
+          GoRoute(
+            path: 'register',
+            builder: (context, state) => SimpleAuthRegisterScreen(),
           ),
-          // GoRoute(path: '/simple_auth/otp_verification', builder: (context, state) => OtpVerificationScreen()),
         ],
       ),
       GoRoute(
