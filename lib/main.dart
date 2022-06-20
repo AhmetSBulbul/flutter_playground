@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/simple_login/login_info.dart';
 import 'package:flutter_playground/simple_login/login_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +20,67 @@ class App extends StatelessWidget {
       child: MaterialApp.router(
           theme: ThemeData(
             useMaterial3: true,
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                foregroundColor: MaterialStateProperty.all(
+                  R.colors.white,
+                ),
+                backgroundColor: MaterialStateProperty.all(R.colors.dark),
+                minimumSize: MaterialStateProperty.all(
+                  const Size(200, 50),
+                ),
+                textStyle: MaterialStateProperty.all(
+                  const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            inputDecorationTheme: InputDecorationTheme(
+              labelStyle: TextStyle(
+                color: R.colors.gray,
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+              filled: true,
+              fillColor: R.colors.lightGray,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: R.colors.border, width: 2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: R.colors.border, width: 2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: R.colors.border, width: 2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
             fontFamily: 'Urbanist',
+            // textTheme: TextTheme(
+            //       headlineMedium: TextStyle(
+            //         fontWeight: FontWeight.w700,
+            //         fontSize: 30,
+            //         letterSpacing: -0.3,
+            //         color: R.colors.dark,
+            //       ),
+            //       labelMedium: TextStyle(
+            //         color: R.colors.gray,
+            //         fontSize: 15,
+            //         fontWeight: FontWeight.w500,
+            //       ),
+            //       button: const TextStyle(
+            //         fontSize: 15,
+            //         fontWeight: FontWeight.w600,
+            //       ),
+            //     ),
           ),
           routeInformationProvider: _router.routeInformationProvider,
           routeInformationParser: _router.routeInformationParser,
