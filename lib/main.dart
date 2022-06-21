@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
+import 'package:flutter_playground/movie_wiki/view/movie_wiki_onboard.dart';
+import 'package:flutter_playground/movie_wiki/view/omdb_view.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/forgot_password_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/login_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/register_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/welcome_screen.dart';
-import 'package:flutter_playground/simple_auth_ui/widgets/simple_auth_layout.dart';
 import 'package:flutter_playground/simple_login/login/login_view_model.dart';
 import 'package:flutter_playground/simple_login/login/login_screen.dart';
 import 'package:flutter_playground/simple_login/otp_verification/otp_verification_screen.dart';
@@ -132,9 +133,13 @@ class App extends StatelessWidget {
   }
 
   late final _router = GoRouter(
-    initialLocation: '/simple_auth',
+    initialLocation: '/movie_wiki_onboard',
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomePage()),
+      GoRoute(path: '/omdb', builder: (context, state) => const OmdbView()),
+      GoRoute(
+          path: '/movie_wiki_onboard',
+          builder: (context, state) => const MovieWikiOnboard()),
       GoRoute(
         path: '/simple_auth',
         builder: (context, state) => const SimpleAuthWelcomeScreen(),

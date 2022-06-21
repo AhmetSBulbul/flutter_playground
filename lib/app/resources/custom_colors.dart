@@ -8,6 +8,7 @@ class CustomColors {
   final Color gray;
   final Color lightGray;
   final Color white;
+  final Color black;
 
   const CustomColors()
       : primary = const Color(0xFF35C2C1),
@@ -16,7 +17,8 @@ class CustomColors {
         darkGray = const Color(0xFF6A707C),
         gray = const Color(0xFF8391A1),
         lightGray = const Color(0xFFF7F8F9),
-        white = const Color(0xFFFFFFFF);
+        white = const Color(0xFFFFFFFF),
+        black = const Color(0xFF000000);
 }
 
 // enum EnhancedCustomColors {
