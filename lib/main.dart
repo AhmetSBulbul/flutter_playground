@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
+import 'package:flutter_playground/home/home_screen.dart';
 import 'package:flutter_playground/movie_wiki/view/movie_wiki_onboard.dart';
 import 'package:flutter_playground/movie_wiki/view/omdb_view.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/forgot_password_screen.dart';
@@ -133,9 +134,9 @@ class App extends StatelessWidget {
   }
 
   late final _router = GoRouter(
-    initialLocation: '/movie_wiki_onboard',
+    initialLocation: '/',
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const HomePage()),
+      GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
       GoRoute(path: '/omdb', builder: (context, state) => const OmdbView()),
       GoRoute(
           path: '/movie_wiki_onboard',

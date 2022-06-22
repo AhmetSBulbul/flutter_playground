@@ -3,6 +3,8 @@ import 'package:flutter_playground/app/extensions/context_extension.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'dart:math' as math;
 
+import 'package:go_router/go_router.dart';
+
 class MovieWikiOnboard extends StatelessWidget {
   const MovieWikiOnboard({Key? key}) : super(key: key);
 
@@ -69,7 +71,7 @@ class MovieWikiOnboard extends StatelessWidget {
                       style: context.theme.elevatedButtonTheme.style?.copyWith(
                         backgroundColor: MaterialStateProperty.all(Colors.red),
                       ),
-                      onPressed: () {},
+                      onPressed: () => context.go('/omdb'),
                       child: Text('Get Started'),
                     )
                   ],
