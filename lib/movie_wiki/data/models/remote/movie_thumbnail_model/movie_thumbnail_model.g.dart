@@ -18,9 +18,9 @@ MovieThumbnailModel _$MovieThumbnailModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$MovieThumbnailModelToJson(
         MovieThumbnailModel instance) =>
     <String, dynamic>{
-      'Title': instance.title,
-      'Year': instance.year,
+      'title': instance.title,
+      'year': instance.year,
       'imdbID': instance.imdbID,
-      'Type': instance.type,
-      'Poster': instance.poster,
+      'type': instance.type,
+      'poster': instance.poster,
     };

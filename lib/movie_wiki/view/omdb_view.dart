@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/movie_wiki/data/models/movie_thumbnail_model/movie_thumbnail_model.dart';
+import 'package:flutter_playground/movie_wiki/data/models/local/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
+import 'package:flutter_playground/movie_wiki/data/models/remote/movie_thumbnail_model/movie_thumbnail_model.dart';
 import 'package:flutter_playground/movie_wiki/data/remote_source.dart';
+// import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class OmdbView extends StatefulWidget {
   const OmdbView({Key? key}) : super(key: key);
@@ -11,6 +14,7 @@ class OmdbView extends StatefulWidget {
 
 class _OmdbViewState extends State<OmdbView> {
   late OmdbRemoteSource _source;
+  final _thumbnailBox = Hive.box('thumbnails');
   String searchVal = '';
   String posterUrl = '';
   List<MovieThumbnailModel> movies = [];
@@ -28,8 +32,8 @@ class _OmdbViewState extends State<OmdbView> {
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Center(
-            child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextField(
               onChanged: (value) => searchVal = value,
@@ -48,7 +52,37 @@ class _OmdbViewState extends State<OmdbView> {
                   });
                 },
                 child: Text('Search')),
-            ...movies.map((e) => Text(e.title)).toList()
+            Text('Remote'),
+            Expanded(
+              child: ListView(
+                children: [
+                  ...movies.map(
+                    (e) => ListTile(
+                      title: Text(e.title),
+                      onTap: () {
+                        _thumbnailBox.add(MovieThumbnailLocalModel(
+                            e.imdbID, e.title, e.year, e.type, e.poster));
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text('Local'),
+            if (_thumbnailBox.values.isNotEmpty)
+              Expanded(
+                child: ValueListenableBuilder<Box>(
+                  valueListenable: _thumbnailBox.listenable(),
+                  builder: (context, box, widget) {
+                    return ListView.builder(
+                      itemBuilder: (context, index) => ListTile(
+                        title:
+                            Text(_thumbnailBox.values.elementAt(index).title),
+                      ),
+                    );
+                  },
+                ),
+              )
             // if (posterUrl.isNotEmpty) Image.network(posterUrl),
           ],
         )),

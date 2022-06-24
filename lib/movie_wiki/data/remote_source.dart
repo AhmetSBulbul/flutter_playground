@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_playground/movie_wiki/data/models/movie_detailed_model.dart/movie_detailed_model.dart';
-import 'package:flutter_playground/movie_wiki/data/models/movie_thumbnail_model/movie_thumbnail_model.dart';
+import 'package:flutter_playground/movie_wiki/data/models/remote/movie_detailed_model.dart/movie_detailed_model.dart';
+import 'package:flutter_playground/movie_wiki/data/models/remote/movie_thumbnail_model/movie_thumbnail_model.dart';
 import 'package:flutter_playground/movie_wiki/secrets.dart';
 import 'package:http/http.dart' as http;
 
