@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               HomeShowcaseItem(
                 title: 'Movie Wiki',
-                path: '/movie_wiki',
+                path: '/movie_wiki_onboard',
                 crossCount: 5,
                 mainCount: 3,
                 angle: math.pi / 18,
@@ -75,6 +75,7 @@ class HomeShowcaseItem extends StatelessWidget {
               onTap: () => context.go(path),
               child: Stack(
                 fit: StackFit.expand,
+                clipBehavior: Clip.none,
                 children: [
                   DecoratedBox(
                     position: DecorationPosition.foreground,
