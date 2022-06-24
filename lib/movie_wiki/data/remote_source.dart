@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_playground/movie_wiki/data/models/omdb_model.dart';
 import 'package:flutter_playground/movie_wiki/secrets.dart';
 import 'package:http/http.dart' as http;
@@ -11,7 +13,7 @@ class OmdbRemoteSource {
     final response = await http.Client().get(Uri.parse(
         'http://www.omdbapi.com/?t=$title&apikey=${Secrets.OMDB_API_KEY}'));
     if (response.statusCode == 200) {
-      return OmdbModel.fromJson(response.body);
+      return OmdbModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to load omdb');
     }
