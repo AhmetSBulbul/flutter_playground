@@ -1,23 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie_detailed_local_model.dart';
+part of 'movie_local_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class MovieDetailedLocalModelAdapter
-    extends TypeAdapter<MovieDetailedLocalModel> {
+class MovieLocalModelAdapter extends TypeAdapter<MovieLocalModel> {
   @override
   final int typeId = 1;
 
   @override
-  MovieDetailedLocalModel read(BinaryReader reader) {
+  MovieLocalModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return MovieDetailedLocalModel(
+    return MovieLocalModel(
       fields[0] as String,
       fields[1] as String,
       fields[2] as String,
@@ -33,7 +32,7 @@ class MovieDetailedLocalModelAdapter
   }
 
   @override
-  void write(BinaryWriter writer, MovieDetailedLocalModel obj) {
+  void write(BinaryWriter writer, MovieLocalModel obj) {
     writer
       ..writeByte(11)
       ..writeByte(0)
@@ -66,7 +65,7 @@ class MovieDetailedLocalModelAdapter
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MovieDetailedLocalModelAdapter &&
+      other is MovieLocalModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

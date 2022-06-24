@@ -1,20 +1,43 @@
-import 'package:json_annotation/json_annotation.dart';
-part 'movie_detailed_model.g.dart';
+import 'package:hive/hive.dart';
+part 'movie_local_model.g.dart';
 
-@JsonSerializable()
-class MovieDetailedModel {
+@HiveType(typeId: 1)
+class MovieLocalModel {
+  @HiveField(0)
+  final String imdbID;
+
+  @HiveField(1)
   final String title;
+
+  @HiveField(2)
   final String year;
+
+  @HiveField(3)
   final String rated;
+
+  @HiveField(4)
   final String actors;
+
+  @HiveField(5)
   final String poster;
+
+  @HiveField(6)
   final String genre;
+
+  @HiveField(7)
   final String director;
+
+  @HiveField(8)
   final String metascore;
+
+  @HiveField(9)
   final String country;
+
+  @HiveField(10)
   final String language;
 
-  MovieDetailedModel(
+  MovieLocalModel(
+      this.imdbID,
       this.title,
       this.year,
       this.rated,
@@ -25,9 +48,4 @@ class MovieDetailedModel {
       this.metascore,
       this.country,
       this.language);
-
-  factory MovieDetailedModel.fromJson(Map<String, dynamic> json) =>
-      _$MovieDetailedModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MovieDetailedModelToJson(this);
 }

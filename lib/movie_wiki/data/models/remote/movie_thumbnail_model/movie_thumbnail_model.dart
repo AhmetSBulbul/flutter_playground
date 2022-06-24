@@ -1,9 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'movie_thumbnail_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class MovieThumbnailModel {
-  final String title, year, imdbID, type, poster;
+  final String title, year, type, poster;
+  @JsonKey(name: 'imdbID')
+  final String imdbID;
 
   MovieThumbnailModel(
       this.title, this.year, this.imdbID, this.type, this.poster);

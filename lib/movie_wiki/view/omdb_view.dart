@@ -22,6 +22,7 @@ class _OmdbViewState extends State<OmdbView> {
   void initState() {
     super.initState();
     _source = OmdbRemoteSource();
+    _thumbnailBox.clear();
   }
 
   //movies.map((e) => Text(e.title)).toList()
@@ -68,21 +69,21 @@ class _OmdbViewState extends State<OmdbView> {
                 ],
               ),
             ),
-            Text('Local'),
-            if (_thumbnailBox.values.isNotEmpty)
-              Expanded(
-                child: ValueListenableBuilder<Box>(
-                  valueListenable: _thumbnailBox.listenable(),
-                  builder: (context, box, widget) {
-                    return ListView.builder(
-                      itemBuilder: (context, index) => ListTile(
-                        title:
-                            Text(_thumbnailBox.values.elementAt(index).title),
-                      ),
-                    );
-                  },
-                ),
-              )
+            // Text('Local'),
+            // if (_thumbnailBox.values.isNotEmpty)
+            //   Expanded(
+            //     child: ValueListenableBuilder<Box>(
+            //       valueListenable: _thumbnailBox.listenable(),
+            //       builder: (context, box, widget) {
+            //         return ListView.builder(
+            //           itemBuilder: (context, index) => ListTile(
+            //             title:
+            //                 Text(_thumbnailBox.values.elementAt(index).title),
+            //           ),
+            //         );
+            //       },
+            //     ),
+            //   )
             // if (posterUrl.isNotEmpty) Image.network(posterUrl),
           ],
         )),

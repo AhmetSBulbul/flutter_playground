@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/home/home_screen.dart';
-import 'package:flutter_playground/movie_wiki/data/models/local/movie_detailed_local_model/movie_detailed_local_model.dart';
+import 'package:flutter_playground/movie_wiki/data/models/local/movie_detailed_local_model/movie_local_model.dart';
 import 'package:flutter_playground/movie_wiki/data/models/local/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
 import 'package:flutter_playground/movie_wiki/view/movie_wiki_onboard.dart';
 import 'package:flutter_playground/movie_wiki/view/omdb_view.dart';
@@ -18,7 +18,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(MovieDetailedLocalModelAdapter());
+  Hive.registerAdapter(MovieLocalModelAdapter());
   Hive.registerAdapter(MovieThumbnailLocalModelAdapter());
 
   await Hive.openBox('thumbnails');
