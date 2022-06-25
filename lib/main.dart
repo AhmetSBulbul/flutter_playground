@@ -212,17 +212,17 @@ class App extends StatelessWidget {
     // show the current router location as the user navigates page to page; note
     // that this is not required for nested navigation but it is useful to show
     // the location as it changes
-    navigatorBuilder: (context, state, child) => Material(
-      child: Column(
-        children: [
-          Expanded(child: child),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(state.location),
-          ),
-        ],
-      ),
-    ),
+    // navigatorBuilder: (context, state, child) => Material(
+    //   child: Column(
+    //     children: [
+    //       Expanded(child: child),
+    //       Padding(
+    //         padding: const EdgeInsets.all(8),
+    //         child: Text(state.location),
+    //       ),
+    //     ],
+    //   ),
+    // ),
 
     // redirect: (state) {
     //   final bool loggedIn = loginInfo.isLoggedIn;

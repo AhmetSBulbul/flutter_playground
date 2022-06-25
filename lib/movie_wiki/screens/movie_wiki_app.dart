@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/app/resources/r.dart';
 import 'package:go_router/go_router.dart';
 
 enum MovieWikiAppPage {
@@ -64,6 +65,14 @@ class _MovieWikiAppScreenState extends State<MovieWikiAppScreen> {
     _currentPage = widget.page;
   }
 
+  BottomNavigationBarItem _bottomNavigationBarItem(
+          {required Icon icon, required String label}) =>
+      BottomNavigationBarItem(
+        icon: icon,
+        label: label,
+        backgroundColor: R.colors.dark,
+      );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,27 +82,37 @@ class _MovieWikiAppScreenState extends State<MovieWikiAppScreen> {
       body: Center(
         child: _movieWikiAppPages.elementAt(_currentPage.state),
       ),
+      // floatingActionButton:
+      //     FloatingActionButton(child: Icon(Icons.search), onPressed: () {}),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Colors.black),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'My List',
-              backgroundColor: Colors.black),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Watched',
-              backgroundColor: Colors.black),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Roulette',
-              backgroundColor: Colors.black),
+        // backgroundColor: Colors.black,
+        unselectedItemColor: R.colors.darkGray,
+        showUnselectedLabels: true,
+        selectedLabelStyle:
+            TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
+
+        unselectedLabelStyle: TextStyle(color: R.colors.darkGray),
+        items: <BottomNavigationBarItem>[
+          _bottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          _bottomNavigationBarItem(
+            icon: Icon(Icons.bookmark),
+            label: 'My List',
+          ),
+          _bottomNavigationBarItem(
+            icon: Icon(Icons.checklist),
+            label: 'Watched',
+          ),
+          _bottomNavigationBarItem(
+            icon: Icon(Icons.shuffle_rounded),
+            label: 'Roulette',
+          ),
         ],
         currentIndex: _currentPage.state,
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.redAccent,
         onTap: (index) => _onTap(context, index),
       ),
     );
