@@ -40,7 +40,9 @@ class SimpleAuthRegisterScreen extends StatelessWidget {
               labelText: 'Confirm Password',
             ),
           ),
-          ElevatedButton(onPressed: () {}, child: Text('Register')),
+          ElevatedButton(
+              onPressed: () => context.go('/simple_auth/login'),
+              child: Text('Register')),
           DividerWithText(text: 'Or Register With'),
           SocialIconButtons(),
         ],

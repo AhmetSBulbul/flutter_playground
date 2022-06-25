@@ -4,8 +4,8 @@ import 'package:flutter_playground/home/home_screen.dart';
 import 'package:flutter_playground/injection.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_detailed_local_model/movie_local_model.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
-import 'package:flutter_playground/movie_wiki/view/movie_wiki_onboard.dart';
-import 'package:flutter_playground/movie_wiki/view/omdb_view.dart';
+import 'package:flutter_playground/movie_wiki/screens/movie_wiki_onboard.dart';
+import 'package:flutter_playground/movie_wiki/screens/omdb_view.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/forgot_password_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/login_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/register_screen.dart';
@@ -162,9 +162,10 @@ class App extends StatelessWidget {
               builder: (context, state) => SimpleAuthLoginScreen(),
               routes: [
                 GoRoute(
-                    path: 'forgot_password',
-                    builder: (context, state) =>
-                        const SimpleAuthForgotPasswordScreen())
+                  path: 'forgot_password',
+                  builder: (context, state) =>
+                      const SimpleAuthForgotPasswordScreen(),
+                )
               ]),
           GoRoute(
             path: 'register',

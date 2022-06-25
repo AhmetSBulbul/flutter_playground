@@ -41,9 +41,7 @@ class SimpleAuthLoginScreen extends StatelessWidget {
             flex: 2,
           ),
           ElevatedButton(
-            onPressed: () {
-              // context.read<LoginInfo>().login();
-            },
+            onPressed: () => context.go('/'),
             child: const Text(
               'Login',
             ),
@@ -62,7 +60,9 @@ class SimpleAuthLoginScreen extends StatelessWidget {
         ],
       ),
       footerText: 'Don’t have an account?',
-      footerAction: TextButton(child: Text('Register Now'), onPressed: () {}),
+      footerAction: TextButton(
+          child: Text('Register Now'),
+          onPressed: () => context.go('/simple_auth/register')),
     );
   }
 }

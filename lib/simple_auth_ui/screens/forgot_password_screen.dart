@@ -28,7 +28,9 @@ class SimpleAuthForgotPasswordScreen extends StatelessWidget {
           SizedBox(
             height: 28,
           ),
-          ElevatedButton(onPressed: () {}, child: Text('Send Code')),
+          ElevatedButton(
+              onPressed: () => context.go('/simple_auth/login'),
+              child: Text('Send Code')),
         ],
       ),
     );

@@ -57,7 +57,8 @@ class SimpleAuthWelcomeScreen extends StatelessWidget {
                       height: 46.0,
                     ),
                     TextButton(
-                        onPressed: () {}, child: Text('Continue as a guest'))
+                        onPressed: () => context.go('/'),
+                        child: Text('Continue as a guest'))
                   ],
                 ),
               ),
