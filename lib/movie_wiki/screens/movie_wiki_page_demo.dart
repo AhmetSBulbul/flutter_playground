@@ -15,6 +15,20 @@ class MovieWikiPageDemo extends StatelessWidget {
         backgroundColor: R.colors.movieBlack,
         scaffoldBackgroundColor: R.colors.movieBlack,
         primaryColor: R.colors.movieRed,
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w700,
+            letterSpacing: -0.3,
+            color: R.colors.dark,
+          ),
+          bodyText2: TextStyle(fontSize: 16, color: R.colors.lightGray),
+          caption: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: R.colors.lightGray,
+            fontSize: 15,
+          ),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
           shape: MaterialStateProperty.all(
@@ -30,12 +44,15 @@ class MovieWikiPageDemo extends StatelessWidget {
           ),
         )),
         inputDecorationTheme: InputDecorationTheme(
+          iconColor: R.colors.movieRed,
           labelStyle: TextStyle(
-            color: R.colors.darkGray,
+            color: R.colors.lightGray,
             fontSize: 15,
             fontWeight: FontWeight.w500,
           ),
           filled: true,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+
           fillColor: R.colors.movieGray.withOpacity(0.2),
           focusColor: R.colors.movieRed.withOpacity(0.2),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 14),

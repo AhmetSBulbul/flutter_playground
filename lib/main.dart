@@ -150,7 +150,7 @@ class App extends StatelessWidget {
   }
 
   late final _router = GoRouter(
-    initialLocation: '/movie_wiki_page_demo',
+    initialLocation: '/',
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
       GoRoute(path: '/omdb', builder: (context, state) => const OmdbView()),

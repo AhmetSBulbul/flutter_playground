@@ -72,11 +72,7 @@ class MovieWikiHomePage extends StatelessWidget {
             builder: (context, state) {
               if (state is SearchBlocInitial) {
                 return Center(
-                  child: ElevatedButton(
-                    child: Text('Search'),
-                    onPressed: () => context.read<SearchBlocBloc>().add(
-                        SearchBlocEventSearch(ParamsMovieSearch('sunshine'))),
-                  ),
+                  child: Text('Search for a movie'),
                 );
               } else if (state is SearchBlocLoading) {
                 return Center(
