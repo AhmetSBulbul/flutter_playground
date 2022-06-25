@@ -28,13 +28,15 @@ class MovieWikiHomePage extends StatelessWidget {
               children: [
                 Expanded(
                     child: TextField(
-                  // showCursor: false,
+                  decoration: InputDecoration(
+                      labelText: 'Search', prefixIcon: Icon(Icons.search)),
                   cursorColor: R.colors.movieRed,
                   cursorRadius: Radius.circular(5),
-                  // onSubmitted: (val) {
-                  //   locator<SearchBlocBloc>()
-                  //       .add(SearchBlocEventSearch(ParamsMovieSearch(val)));
-                  // },
+                  onSubmitted: (val) {
+                    print(val);
+                    _searchBloc.add(SearchBlocEventSearch(
+                        ParamsMovieSearch(val.replaceAll(' ', '+'))));
+                  },
                 )),
                 SizedBox(
                   width: 12,
@@ -84,14 +86,15 @@ class MovieWikiHomePage extends StatelessWidget {
                 );
               } else if (state is SearchBlocLoaded) {
                 return GridView(
+                  padding: EdgeInsets.all(8),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 1 / 1.5,
                       crossAxisSpacing: 12,
                       mainAxisSpacing: 12),
-                  // childAspectRatio: 1.0,
-
-                  children: state.searchResult.search.map((e) {
+                  children: state.searchResult.search
+                      .where((element) => element.poster.contains('http'))
+                      .map((e) {
                     return Image.network(e.poster);
                   }).toList(),
                 );

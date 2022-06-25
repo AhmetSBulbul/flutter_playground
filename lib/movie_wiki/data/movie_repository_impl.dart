@@ -29,6 +29,8 @@ class MovieRepositoryImpl implements IMovieRepository {
       return Right(movie);
     } on ServerException {
       return Left(ServerFailure());
+    } catch (e) {
+      return Left(ServerFailure());
     }
   }
 
@@ -39,6 +41,8 @@ class MovieRepositoryImpl implements IMovieRepository {
       final searchResult = await _remoteSource.searchMovieList(title: title);
       return Right(searchResult);
     } on ServerException {
+      return Left(ServerFailure());
+    } catch (e) {
       return Left(ServerFailure());
     }
   }

@@ -31,7 +31,7 @@ class OmdbRemoteSource implements IOmdbRemoteSource {
   @override
   Future<MovieSearchResultModel> searchMovieList(
       {required String title}) async {
-    final response = await http.get(Uri.parse('$baseUrl&s=$title'));
+    final response = await http.get(Uri.parse('$baseUrl&s=${title}'));
     if (response.statusCode == 200) {
       print('girdi');
       return MovieSearchResultModel.fromJson(jsonDecode(response.body));
