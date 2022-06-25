@@ -4,6 +4,7 @@ import 'package:flutter_playground/home/home_screen.dart';
 import 'package:flutter_playground/injection.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_detailed_local_model/movie_local_model.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
+import 'package:flutter_playground/movie_wiki/screens/movie_wiki_app.dart';
 import 'package:flutter_playground/movie_wiki/screens/movie_wiki_onboard.dart';
 import 'package:flutter_playground/movie_wiki/screens/omdb_view.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/forgot_password_screen.dart';
@@ -151,8 +152,23 @@ class App extends StatelessWidget {
       GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
       GoRoute(path: '/omdb', builder: (context, state) => const OmdbView()),
       GoRoute(
-          path: '/movie_wiki_onboard',
-          builder: (context, state) => const MovieWikiOnboard()),
+        path: '/movie_wiki_onboard',
+        builder: (context, state) => const MovieWikiOnboard(),
+      ),
+      GoRoute(
+        path: '/movie_wiki_app',
+        redirect: (state) =>
+            state.subloc == '/movie_wiki_app/0' ? '/' : '/movie_wiki_app/0',
+      ),
+      GoRoute(
+        path: '/movie_wiki_app/:pid',
+        builder: (context, state) {
+          final page_id = state.params['pid'] ?? '0';
+          final page_state = MovieWikiAppPage.fromPid(page_id);
+          return MovieWikiAppScreen(
+              key: state.pageKey, currentPage: page_state);
+        },
+      ),
       GoRoute(
         path: '/simple_auth',
         builder: (context, state) => const SimpleAuthWelcomeScreen(),
@@ -188,6 +204,26 @@ class App extends StatelessWidget {
         ],
       ),
     ],
+    redirect: (state) {
+      print('current: ' + state.location);
+      print('subloc: ' + state.subloc);
+      print('pageKey: ' + state.pageKey.toString());
+    },
+    // show the current router location as the user navigates page to page; note
+    // that this is not required for nested navigation but it is useful to show
+    // the location as it changes
+    navigatorBuilder: (context, state, child) => Material(
+      child: Column(
+        children: [
+          Expanded(child: child),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(state.location),
+          ),
+        ],
+      ),
+    ),
+
     // redirect: (state) {
     //   final bool loggedIn = loginInfo.isLoggedIn;
     //   final bool loggingIn = state.subloc.startsWith('/login');

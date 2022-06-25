@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               HomeShowcaseItem(
                 title: 'Movie Wiki',
-                path: '/movie_wiki_onboard',
+                path: '/movie_wiki_app/0',
                 crossCount: 5,
                 mainCount: 3,
                 angle: math.pi / 18,
