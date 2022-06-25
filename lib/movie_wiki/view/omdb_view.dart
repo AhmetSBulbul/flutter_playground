@@ -3,6 +3,7 @@ import 'package:flutter_playground/injection.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
 import 'package:flutter_playground/movie_wiki/data/remote/models/movie_thumbnail_model/movie_thumbnail_model.dart';
 import 'package:flutter_playground/movie_wiki/data/remote/remote_source.dart';
+import 'package:flutter_playground/movie_wiki/widgets/movie_thumbnail_row_widget.dart';
 import 'package:flutter_playground/movie_wiki/widgets/movie_thumbnail_widget.dart';
 // import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -17,6 +18,7 @@ class OmdbView extends StatefulWidget {
 class _OmdbViewState extends State<OmdbView> {
   late IOmdbRemoteSource _source;
   final _thumbnailBox = Hive.box('thumbnails');
+  bool isGrid = true;
   String searchVal = '';
   String posterUrl = '';
   List<MovieThumbnailModel> movies = [];
@@ -32,6 +34,18 @@ class _OmdbViewState extends State<OmdbView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Watch List'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  isGrid = !isGrid;
+                });
+              },
+              icon: Icon(isGrid ? Icons.table_rows : Icons.grid_view_outlined))
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Center(
@@ -57,23 +71,32 @@ class _OmdbViewState extends State<OmdbView> {
                 child: Text('Search')),
             Text('Remote'),
             Expanded(
-              child: GridView(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1 / 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12),
-                // childAspectRatio: 1.0,
+              child: isGrid
+                  ? GridView(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1 / 2,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12),
+                      // childAspectRatio: 1.0,
 
-                children: movies.map((e) {
-                  return Flexible(
-                    fit: FlexFit.tight,
-                    child: MovieThumbnailWidget(
-                      movieThumbnail: e.toEntity(),
+                      children: movies.map((e) {
+                        return Flexible(
+                          fit: FlexFit.tight,
+                          child: MovieThumbnailWidget(
+                            movieThumbnail: e.toEntity(),
+                          ),
+                        );
+                      }).toList(),
+                    )
+                  : ListView(
+                      children: [
+                        for (final movie in movies)
+                          MovieThumbnailRowWidget(
+                            movieThumbnail: movie.toEntity(),
+                          ),
+                      ],
                     ),
-                  );
-                }).toList(),
-              ),
             ),
 
             // Text('Local'),
