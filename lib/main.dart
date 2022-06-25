@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/home/home_screen.dart';
 import 'package:flutter_playground/injection.dart';
+import 'package:flutter_playground/movie_wiki/bloc/bloc/search_bloc_bloc.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_detailed_local_model/movie_local_model.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
 import 'package:flutter_playground/movie_wiki/screens/movie_wiki_app.dart';
 import 'package:flutter_playground/movie_wiki/screens/movie_wiki_onboard.dart';
+import 'package:flutter_playground/movie_wiki/screens/movie_wiki_page_demo.dart';
 import 'package:flutter_playground/movie_wiki/screens/omdb_view.dart';
+import 'package:flutter_playground/movie_wiki/screens/pages/movie_wiki_home.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/forgot_password_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/login_screen.dart';
 import 'package:flutter_playground/simple_auth_ui/screens/register_screen.dart';
@@ -147,7 +150,7 @@ class App extends StatelessWidget {
   }
 
   late final _router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/movie_wiki_page_demo',
     routes: [
       GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
       GoRoute(path: '/omdb', builder: (context, state) => const OmdbView()),
@@ -159,6 +162,10 @@ class App extends StatelessWidget {
         path: '/movie_wiki_app',
         redirect: (state) =>
             state.subloc == '/movie_wiki_app/0' ? '/' : '/movie_wiki_app/0',
+      ),
+      GoRoute(
+        path: '/movie_wiki_page_demo',
+        builder: (context, state) => const MovieWikiPageDemo(),
       ),
       GoRoute(
         path: '/movie_wiki_app/:pid',

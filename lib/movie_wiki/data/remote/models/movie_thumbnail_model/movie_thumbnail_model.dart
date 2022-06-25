@@ -3,18 +3,19 @@ import 'package:json_annotation/json_annotation.dart';
 part 'movie_thumbnail_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class MovieThumbnailModel {
+class MovieThumbnailModel extends MovieThumbnail {
   final String title, year, type, poster;
   @JsonKey(name: 'imdbID')
-  final String imdbID;
+  final String imdbId;
 
   MovieThumbnailModel(
-      this.title, this.year, this.imdbID, this.type, this.poster);
+      this.title, this.year, this.imdbId, this.type, this.poster)
+      : super(title, year, imdbId, type, poster);
 
   factory MovieThumbnailModel.fromJson(Map<String, dynamic> json) =>
       _$MovieThumbnailModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$MovieThumbnailModelToJson(this);
   MovieThumbnail toEntity() =>
-      MovieThumbnail(imdbID, title, year, type, poster);
+      MovieThumbnail(imdbId, title, year, type, poster);
 }

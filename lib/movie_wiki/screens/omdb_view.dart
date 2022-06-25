@@ -58,17 +58,17 @@ class _OmdbViewState extends State<OmdbView> {
                 label: Text('Enter the name'),
               ),
             ),
-            ElevatedButton(
-                onPressed: () async {
-                  // final OmdbMovieModel model =
-                  //     await _source.getMovie(searchVal);
-                  final List<MovieThumbnailModel> movieList =
-                      await _source.searchMovieList(title: searchVal);
-                  setState(() {
-                    movies = movieList;
-                  });
-                },
-                child: Text('Search')),
+            // ElevatedButton(
+            //     onPressed: () async {
+            //       // final OmdbMovieModel model =
+            //       //     await _source.getMovie(searchVal);
+            //       final List<MovieThumbnailModel> movieList =
+            //           await _source.searchMovieList(title: searchVal);
+            //       setState(() {
+            //         movies = movieList;
+            //       });
+            //     },
+            //     child: Text('Search')),
             Text('Remote'),
             Expanded(
               child: isGrid

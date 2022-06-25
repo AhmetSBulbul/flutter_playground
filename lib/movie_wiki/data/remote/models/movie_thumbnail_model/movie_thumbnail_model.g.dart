@@ -22,5 +22,5 @@ Map<String, dynamic> _$MovieThumbnailModelToJson(
       'Year': instance.year,
       'Type': instance.type,
       'Poster': instance.poster,
-      'imdbID': instance.imdbID,
+      'imdbID': instance.imdbId,
     };

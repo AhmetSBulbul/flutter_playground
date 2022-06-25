@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/app/extensions/context_extension.dart';
 import 'package:flutter_playground/app/resources/r.dart';
 import 'package:go_router/go_router.dart';
 
@@ -102,10 +103,15 @@ class _MovieWikiAppScreenState extends State<MovieWikiAppScreen> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-          brightness: Brightness.dark,
-          backgroundColor: R.colors.dark,
-          scaffoldBackgroundColor: R.colors.dark,
-          primaryColor: Colors.red),
+        brightness: Brightness.dark,
+        backgroundColor: R.colors.movieBlack,
+        scaffoldBackgroundColor: R.colors.movieBlack,
+        primaryColor: R.colors.movieRed,
+        inputDecorationTheme: context.theme.inputDecorationTheme.copyWith(
+          contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+          constraints: BoxConstraints(minHeight: 56),
+        ),
+      ),
       child: Scaffold(
         appBar: AppBar(
           title: Text('Movie Wiki'),
