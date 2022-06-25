@@ -3,7 +3,7 @@ import 'package:flutter_playground/movie_wiki/domain/entities/movie_thumbnail.da
 
 class MovieSearchResult extends Equatable {
   final List<MovieThumbnail> search;
-  final int totalResults;
+  final String totalResults;
 
   MovieSearchResult(this.search, this.totalResults);
   @override

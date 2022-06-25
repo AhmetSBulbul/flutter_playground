@@ -8,7 +8,7 @@ part 'movie_search_result_model.g.dart';
 class MovieSearchResultModel extends MovieSearchResult {
   final List<MovieThumbnailModel> search;
   @JsonKey(name: 'totalResults')
-  final int totalResults;
+  final String totalResults;
 
   MovieSearchResultModel(this.search, this.totalResults)
       : super(search, totalResults);

@@ -12,9 +12,12 @@ class SearchBlocBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
   final GetMovieSearchResult _getMovieSearchResult;
 
   SearchBlocBloc(this._getMovieSearchResult) : super(SearchBlocInitial()) {
-    on<SearchBlocEventSearch>((event, emit) {
-      print('giriyorum');
-      super.emit(SearchBlocError('error'));
+    on<SearchBlocEventSearch>((event, emit) async {
+      emit(SearchBlocLoading());
+
+      final result = await _getMovieSearchResult(event.searchParams);
+      result.fold((l) => emit(SearchBlocError(l.toString())),
+          (r) => emit(SearchBlocLoaded(r)));
     });
   }
 }

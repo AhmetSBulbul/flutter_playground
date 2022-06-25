@@ -12,7 +12,7 @@ MovieSearchResultModel _$MovieSearchResultModelFromJson(
       (json['Search'] as List<dynamic>)
           .map((e) => MovieThumbnailModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['totalResults'] as int,
+      json['totalResults'] as String,
     );
 
 Map<String, dynamic> _$MovieSearchResultModelToJson(

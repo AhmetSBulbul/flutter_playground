@@ -5,6 +5,7 @@ import 'package:flutter_playground/app/resources/r.dart';
 import 'package:flutter_playground/injection.dart';
 import 'package:flutter_playground/movie_wiki/bloc/bloc/search_bloc_bloc.dart';
 import 'package:flutter_playground/movie_wiki/domain/usecases/get_movie_search_result.dart';
+import 'package:flutter_playground/movie_wiki/widgets/movie_thumbnail_widget.dart';
 
 class MovieWikiHomePage extends StatelessWidget {
   MovieWikiHomePage({Key? key}) : super(key: key);
@@ -82,8 +83,17 @@ class MovieWikiHomePage extends StatelessWidget {
                   ),
                 );
               } else if (state is SearchBlocLoaded) {
-                return Center(
-                  child: Text('Loaded'),
+                return GridView(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1 / 1.5,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12),
+                  // childAspectRatio: 1.0,
+
+                  children: state.searchResult.search.map((e) {
+                    return Image.network(e.poster);
+                  }).toList(),
                 );
               } else if (state is SearchBlocError) {
                 return Center(
