@@ -1,3 +1,4 @@
+import 'package:flutter_playground/movie_wiki/domain/entities/movie_thumbnail.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'movie_thumbnail_model.g.dart';
 
@@ -14,4 +15,6 @@ class MovieThumbnailModel {
       _$MovieThumbnailModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$MovieThumbnailModelToJson(this);
+  MovieThumbnail toEntity() =>
+      MovieThumbnail(imdbID, title, year, type, poster);
 }

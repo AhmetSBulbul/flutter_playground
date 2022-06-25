@@ -3,6 +3,7 @@ import 'package:flutter_playground/injection.dart';
 import 'package:flutter_playground/movie_wiki/data/local/models/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
 import 'package:flutter_playground/movie_wiki/data/remote/models/movie_thumbnail_model/movie_thumbnail_model.dart';
 import 'package:flutter_playground/movie_wiki/data/remote/remote_source.dart';
+import 'package:flutter_playground/movie_wiki/widgets/movie_thumbnail_widget.dart';
 // import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -32,7 +33,7 @@ class _OmdbViewState extends State<OmdbView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding: const EdgeInsets.all(18.0),
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -56,20 +57,25 @@ class _OmdbViewState extends State<OmdbView> {
                 child: Text('Search')),
             Text('Remote'),
             Expanded(
-              child: ListView(
-                children: [
-                  ...movies.map(
-                    (e) => ListTile(
-                      title: Text(e.title),
-                      onTap: () {
-                        _thumbnailBox.add(MovieThumbnailLocalModel(
-                            e.imdbID, e.title, e.year, e.type, e.poster));
-                      },
+              child: GridView(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1 / 2,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12),
+                // childAspectRatio: 1.0,
+
+                children: movies.map((e) {
+                  return Flexible(
+                    fit: FlexFit.tight,
+                    child: MovieThumbnailWidget(
+                      movieThumbnail: e.toEntity(),
                     ),
-                  ),
-                ],
+                  );
+                }).toList(),
               ),
             ),
+
             // Text('Local'),
             // if (_thumbnailBox.values.isNotEmpty)
             //   Expanded(
