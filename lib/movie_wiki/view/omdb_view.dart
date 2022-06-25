@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/movie_wiki/data/models/local/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
-import 'package:flutter_playground/movie_wiki/data/models/remote/movie_thumbnail_model/movie_thumbnail_model.dart';
-import 'package:flutter_playground/movie_wiki/data/remote_source.dart';
+import 'package:flutter_playground/injection.dart';
+import 'package:flutter_playground/movie_wiki/data/local/models/movie_thumbnail_local_model/movie_thumbnail_local_model.dart';
+import 'package:flutter_playground/movie_wiki/data/remote/models/movie_thumbnail_model/movie_thumbnail_model.dart';
+import 'package:flutter_playground/movie_wiki/data/remote/remote_source.dart';
 // import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -13,7 +14,7 @@ class OmdbView extends StatefulWidget {
 }
 
 class _OmdbViewState extends State<OmdbView> {
-  late OmdbRemoteSource _source;
+  late IOmdbRemoteSource _source;
   final _thumbnailBox = Hive.box('thumbnails');
   String searchVal = '';
   String posterUrl = '';
@@ -21,7 +22,7 @@ class _OmdbViewState extends State<OmdbView> {
   @override
   void initState() {
     super.initState();
-    _source = OmdbRemoteSource();
+    _source = locator<IOmdbRemoteSource>();
     _thumbnailBox.clear();
   }
 
@@ -47,7 +48,7 @@ class _OmdbViewState extends State<OmdbView> {
                   // final OmdbMovieModel model =
                   //     await _source.getMovie(searchVal);
                   final List<MovieThumbnailModel> movieList =
-                      await _source.getMovieList(searchVal);
+                      await _source.searchMovieList(title: searchVal);
                   setState(() {
                     movies = movieList;
                   });
